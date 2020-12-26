@@ -21,7 +21,7 @@
         <div class="container-fluid" v-if="errorflag == true">
             <p style="margin: 1rem auto;color: red;text-align: center;">{{errormsg}}</p>
         </div>
-        <form @submit.prevent="fetchWeather" autocomplete="off">
+        <form @submit.prevent="fetchWeather" autocomplete="off" style="padding: 2rem;">
             <div class="mb-3">
                 <label for="newstext" class="form-label"></label>
                 <input type="search" class="form-control" id="newstext" v-model="query">

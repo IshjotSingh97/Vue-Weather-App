@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Icon -->
+    <link rel="icon" href="https://vuejs.org/images/logo.png" type="image/gif" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Vue Weather App</title>
+</head>
+
+<body>
+    <div class="col-md-6" style="margin: 0 auto;" id="mydiv">
+        <img src="https://vuejs.org/images/logo.png" alt="thumbnail" class="img-thumbnail" style="margin: 1rem auto;display: block;width: 50px;">
+        <h1 class="h1-responsive" style="margin: 0 auto;text-align: center;">{{heading}}</h1>
+        <hr>
+        <form @submit.prevent="fetchWeather"> 
+            <div class="mb-3">
+                <label for="newstext" class="form-label"></label>
+                <input type="search" class="form-control" id="newstext" v-model="query">
+                <p style="color: black;">Your query is {{query}}</p>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

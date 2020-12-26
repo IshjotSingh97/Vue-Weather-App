@@ -4,19 +4,22 @@ const myvueComponent = new Vue({
     data : {
         heading : "Weather App using Vue",
         query : null,
+        jsonObject : null,
+        errorflag : false,
+        errormsg : ''
     },
     methods : {
         fetchWeather(){
-            console.log(this.query)
             const api = `https://api.openweathermap.org/data/2.5/weather?appid=` + API_KEY + `&q=` + `${this.query}`+ `&units=metric`
-            console.log(api)
             axios.get(api)
             .then((response)=>{
-                console.log("fetching response....")
-                console.log(response)
+                this.jsonObject = response.data
+                this.errorflag = false
+                this.errormsg = ''
             })
-            .catch((err)=>{
-                console.log(err)
+            .catch((error)=>{
+                this.errorflag = true
+                this.errormsg = "Please try out with a valid city name"
             })
 
         }

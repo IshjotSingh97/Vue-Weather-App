@@ -15,17 +15,32 @@
 
 <body>
     <div class="col-md-6" style="margin: 0 auto;" id="mydiv">
-        <img src="https://vuejs.org/images/logo.png" alt="thumbnail" class="img-thumbnail" style="margin: 1rem auto;display: block;width: 50px;">
+        <img src="https://vuejs.org/images/logo.png" alt="thumbnail" class="img-thumbnail"
+            style="margin: 1rem auto;display: block;width: 50px;">
         <h1 class="h1-responsive" style="margin: 0 auto;text-align: center;">{{heading}}</h1>
-        <hr>
-        <form @submit.prevent="fetchWeather"> 
+        <div class="container-fluid" v-if="errorflag == true">
+            <p style="margin: 1rem auto;color: red;text-align: center;">{{errormsg}}</p>
+        </div>
+        <form @submit.prevent="fetchWeather" autocomplete="off">
             <div class="mb-3">
                 <label for="newstext" class="form-label"></label>
                 <input type="search" class="form-control" id="newstext" v-model="query">
-                <p style="color: black;">Your query is {{query}}</p>
             </div>
             <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;">Submit</button>
         </form>
+        <div class="container-fluid" v-if="errorflag == false && jsonObject != null">
+            <p style="margin: 1rem auto;color: black;text-align: center;">You queried for <b
+                    style="color:black;">{{query}}</b></p>
+
+            <ul>
+                <li>Latitude: {{jsonObject.coord.lat}}</li>
+                <li>Longitude: {{jsonObject.coord.lon}}</li>
+                <li>Temperature: {{jsonObject.main.temp}} Degrees Celsius</li>
+                <li>Description: {{jsonObject.weather[0].main}}</li>
+                <li>Humidity: {{jsonObject.main.humidity}} g/kg</li>
+                <li>Wind Speed: {{jsonObject.wind.speed}} m/s</li>
+            </ul>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
